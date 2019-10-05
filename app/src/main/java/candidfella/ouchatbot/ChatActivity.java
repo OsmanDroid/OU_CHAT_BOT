@@ -51,7 +51,10 @@ public class ChatActivity extends AppCompatActivity {
     //FirebaseRecyclerAdapter<ChatModel, ChatViewHolder> adapter;
     //FirebaseRecyclerOptions<ChatModel> options;
 
-    private AIService aiService;
+    //private AIService aiService;
+
+
+    MyProgressDialog myProgressDialog;
 
     @NonNull
     protected static final Query sChatQuery =
@@ -66,6 +69,8 @@ public class ChatActivity extends AppCompatActivity {
         editText = findViewById(R.id.editText);
         sendButton = findViewById(R.id.send_btn);
 
+        myProgressDialog = new MyProgressDialog(this);
+        myProgressDialog.showPDiialog();
 
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -90,6 +95,8 @@ public class ChatActivity extends AppCompatActivity {
                 chatModelList.add(model);
                 adapter.notifyDataSetChanged();
                 recyclerView.scrollToPosition(chatModelList.size() - 1);
+
+                myProgressDialog.dismissPDialog();
             }
 
             @Override
@@ -117,7 +124,7 @@ public class ChatActivity extends AppCompatActivity {
                 AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System);
 
-        aiService = AIService.getService(this, config);
+        //aiService = AIService.getService(this, config);
         //aiService.setListener(this);
 
         final AIDataService aiDataService = new AIDataService(this,config);
@@ -145,9 +152,9 @@ public class ChatActivity extends AppCompatActivity {
                         protected AIResponse doInBackground(AIRequest... aiRequests) {
                             final AIRequest request = aiRequests[0];
                             try {
-                                final AIResponse response = aiDataService.request(aiRequest);
-                                return response;
+                                return aiDataService.request(aiRequest);
                             } catch (AIServiceException e) {
+                                Log.d(TAG, "doInBackground: Error:"+e.toString());
                             }
                             return null;
                         }

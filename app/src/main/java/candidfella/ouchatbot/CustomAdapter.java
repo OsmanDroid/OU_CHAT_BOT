@@ -1,10 +1,13 @@
 package candidfella.ouchatbot;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +35,7 @@ public class CustomAdapter extends RecyclerView.Adapter<ChatViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
 
+        holder.btnIntent.setVisibility(View.GONE);
 
         ChatModel model = chatModelList.get(position);
         if (chatModelList.get(position).getMsgUser().equals("user")) {
@@ -39,12 +43,33 @@ public class CustomAdapter extends RecyclerView.Adapter<ChatViewHolder> {
             holder.rightText.setText(model.getMsgText());
 
             holder.rightText.setVisibility(View.VISIBLE);
-            holder.leftText.setVisibility(View.INVISIBLE);
+            holder.leftText.setVisibility(View.GONE);
         }
         else {
             holder.leftText.setText(model.getMsgText());
-            holder.rightText.setVisibility(View.INVISIBLE);
+            holder.rightText.setVisibility(View.GONE);
             holder.leftText.setVisibility(View.VISIBLE);
+
+            if(model.getMsgText().contains("https://goo.gl/maps/ycwLmRTvADRLaGvz7"))
+            {
+                holder.btnIntent.setVisibility(View.VISIBLE);
+                holder.btnIntent.setText("VIEW ON MAP");
+
+                holder.btnIntent.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Uri gmmIntentUri = Uri.parse("https://goo.gl/maps/ycwLmRTvADRLaGvz7");
+
+                        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                        mapIntent.setPackage("com.google.android.apps.maps");
+                        if (mapIntent.resolveActivity(context.getPackageManager()) != null) {
+                            context.startActivity(mapIntent);
+                        }else {
+                            Toast.makeText(context,"No App to show Location",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
         }
     }
 
