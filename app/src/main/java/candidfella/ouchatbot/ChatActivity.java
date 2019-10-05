@@ -34,6 +34,7 @@ import ai.api.android.AIService;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 import ai.api.model.Result;
+import spencerstudios.com.bungeelib.Bungee;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -197,6 +198,11 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Bungee.fade(this);
+    }
 }
 
 

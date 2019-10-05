@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 
+import spencerstudios.com.bungeelib.Bungee;
+
 public class MainActivity extends AppCompatActivity {
 
     private final int SPLASH_DISPLAY_LENGTH = 2000;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent mainIntent = new Intent(MainActivity.this, ChatActivity.class);
                 startActivity(mainIntent);
                 finish();
+                Bungee.zoom(MainActivity.this);
             }
         }, SPLASH_DISPLAY_LENGTH);
     }

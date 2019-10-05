@@ -44,11 +44,15 @@ public class CustomAdapter extends RecyclerView.Adapter<ChatViewHolder> {
 
             holder.rightText.setVisibility(View.VISIBLE);
             holder.leftText.setVisibility(View.GONE);
+            holder.bot.setVisibility(View.GONE);
+            holder.user.setVisibility(View.VISIBLE);
         }
         else {
             holder.leftText.setText(model.getMsgText());
             holder.rightText.setVisibility(View.GONE);
             holder.leftText.setVisibility(View.VISIBLE);
+            holder.user.setVisibility(View.GONE);
+            holder.bot.setVisibility(View.VISIBLE);
 
             if(model.getMsgText().contains("https://goo.gl/maps/ycwLmRTvADRLaGvz7"))
             {
