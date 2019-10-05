@@ -65,18 +65,17 @@ public class ChatActivity extends AppCompatActivity {
 
 
         recyclerView.setHasFixedSize(true);
-        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
 
         chatModelList = new ArrayList<>();
-        chatModelList.add(new ChatModel("abcd","user"));
 
         adapter = new CustomAdapter(this,chatModelList);
 
         ref = FirebaseDatabase.getInstance().getReference();
-        ref.keepSynced(true);
+        //ref.keepSynced(true);
 
         ref.child("chat").addChildEventListener(new ChildEventListener() {
             @Override
@@ -86,7 +85,7 @@ public class ChatActivity extends AppCompatActivity {
                 Log.d(TAG, "onChildAdded: "+model.msgText);
 
                 chatModelList.add(model);
-                adapter.updateList(chatModelList);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -155,6 +154,7 @@ public class ChatActivity extends AppCompatActivity {
                                 Result result = response.getResult();
                                 String reply = result.getFulfillment().getSpeech();
                                 ChatModel chatMessage = new ChatModel(reply, "bot");
+                                Log.d(TAG, "onPostExecute: "+chatMessage);
                                 ref.child("chat").push().setValue(chatMessage);
                             }
                         }
@@ -175,6 +175,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
 
+        recyclerView.setAdapter(adapter);
 
 
     }

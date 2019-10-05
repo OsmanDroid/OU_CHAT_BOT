@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "258089181831",
+    "firebase_url": "https://ou-chat-bot.firebaseio.com",
+    "project_id": "ou-chat-bot",
+    "storage_bucket": "ou-chat-bot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258089181831:android:782e06692678e685e7ce22",
+        "android_client_info": {
+          "package_name": "candidfella.ouchatbot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "258089181831-4oaqbgok9dn8jo87gknrpt3d2f3vqu7j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "candidfella.ouchatbot",
+            "certificate_hash": "833669c63c1288631b84be645786d3052935ed76"
+          }
+        },
+        {
+          "client_id": "258089181831-ko85u5u9kvcd1gqm9ihgj4933rdhl6u5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgbIwUeR82dyd7nReYhyX6eAb7cfKYmVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "258089181831-ko85u5u9kvcd1gqm9ihgj4933rdhl6u5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
