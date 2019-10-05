@@ -32,6 +32,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
+    //implementation 'com.github.Binary-Finery:Bungee:master-SNAPSHOT'
+
     implementation 'ai.api:sdk:2.0.7@aar'
 
     //implementation 'ai.api:libai:1.4.8'
@@ -49,6 +51,8 @@ dependencies {
     //implementation 'com.google.cloud:google-cloud-dialogflow:0.67.0-alpha'
     // for Remote Procedure Call to avoid "No functional channel service provider found" error while creating SessionsClient
     //implementation 'io.grpc:grpc-okhttp:1.15.1'
+
+
 
 
 }

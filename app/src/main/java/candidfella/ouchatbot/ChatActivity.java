@@ -1,10 +1,12 @@
 package candidfella.ouchatbot;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -23,6 +25,7 @@ import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import ai.api.AIServiceException;
 import ai.api.android.AIConfiguration;
@@ -86,6 +89,7 @@ public class ChatActivity extends AppCompatActivity {
 
                 chatModelList.add(model);
                 adapter.notifyDataSetChanged();
+                recyclerView.scrollToPosition(chatModelList.size() - 1);
             }
 
             @Override
@@ -172,15 +176,19 @@ public class ChatActivity extends AppCompatActivity {
 
 
 
-
-
-
         recyclerView.setAdapter(adapter);
 
 
     }
 
 
+
+    private void closeKeyboard() {
+        InputMethodManager inputManager = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputManager != null) {
+            inputManager.hideSoftInputFromWindow(Objects.requireNonNull(this.getCurrentFocus()).getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
+        }
+    }
 
 }
 

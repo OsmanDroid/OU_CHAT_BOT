@@ -39,11 +39,11 @@ public class CustomAdapter extends RecyclerView.Adapter<ChatViewHolder> {
             holder.rightText.setText(model.getMsgText());
 
             holder.rightText.setVisibility(View.VISIBLE);
-            holder.leftText.setVisibility(View.GONE);
+            holder.leftText.setVisibility(View.INVISIBLE);
         }
         else {
             holder.leftText.setText(model.getMsgText());
-            holder.rightText.setVisibility(View.GONE);
+            holder.rightText.setVisibility(View.INVISIBLE);
             holder.leftText.setVisibility(View.VISIBLE);
         }
     }
