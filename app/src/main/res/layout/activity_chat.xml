@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="candidfella.ouchatbot.ChatActivity">
+    tools:context="candidfella.ouchatbot.ChatActivity"
+    android:orientation="vertical">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#f4f6f7"
         android:clipToPadding="false"
         android:paddingTop="10dp"
         android:paddingBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_weight="1"/>
 
 
     <LinearLayout
@@ -32,29 +31,26 @@
 
             <EditText
                 android:layout_weight="1"
-                app:layout_constraintBottom_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:id="@+id/editText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="#fff"
+                android:background="@drawable/ed_bg"
                 android:hint="Type a Message"
                 android:textSize="18sp"/>
 
 
 
             <ImageView
-                app:layout_constraintLeft_toLeftOf="@id/editText"
-                android:id="@+id/fab_img"
+                android:backgroundTint="@android:color/transparent"
+                android:id="@+id/send_btn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@android:drawable/ic_menu_send"
-                android:tint="#fff"/>
+                android:src="@drawable/ic_send"/>
 
 
 </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
